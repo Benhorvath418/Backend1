@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Backend</title>
+</head>
+<body>
+    <br>
+    <h1>Backend</h1>
+    <h3>Horváth Benjámin jegyzete</h3>
+    <h3>Dátum: 2021. 10. 01.</h3>
+    <br>
+    <h2>A request és a response</h2>
+    <p>-	Címsorba beírjuk az URL-t, pl. hwsw.hu</p>
+    <p>-	Ilyenkor domainnév lekérés történik</p>
+    <p>-	Elküldünk egy kérést (requestet)</p>
+    <p>-	ezzel megy egy head és egy body</p>
+    <p>-	a requestben van az URL</p>
+    <p>-	a requestet a node.js-szel végezzük el</p>
+    <p>-	ezt válaszküldés (response) követi</p>
+    <p>-	a response egy csomag</p>
+    <p>-	ebben is van head és body</p>
+    <p>-	a bodyban van html, jpg, mov, stb.</p>
+    <p>-	a renderelés a megjelenítést intézi</p>
+    <p>-	ami a háttérben, a kiszolgálón megy, az a backend</p>
+    <p>-	a node.js egy javascript-keretrendszer</p>
+    <br>
+    <h2>Javascript-keretrendszerek közti különbségek</h2>
+    <p>-	A javascript-keretrendszerek közti különbségek kliens javascripten az interaktivitásért felelnek, és megvalósítanak üzleti logikát is.</p>
+    <p>-	A backend keretrendszer csak az üzleti logikáért felel, a háttérben futó interaktív folyamatokat helyezzük ide.</p>
+    <p>-	A backend keretrendszer képes külső adatforrásokhoz való hozzáféréshez.</p>
+    <p>-	A node.js képes fájlt írni és olvasni, valamint adatbázist manipulálni.</p>
+    <br>
+    <h2>URL</h2>
+    <p>-	U: egységes</p>
+    <p>-	R: erőforrás</p>
+    <p>-	L: leíró</p>
+    <br>
+    <p>-	az URL központi része a szerver címe.</p>
+    <br>
+    <p>https://hwsw.hu:port/path#?</p>
+    <p>-	hwsw.hu: domainnév.</p>
+    <p>-	minden szerver erőforrás „//”-rel kezdődik.</p>
+    <p>-	„:” elválasztó karakter</p>
+    <p>-	http: protokollt jelent. Alapértelmezett portcím kapcsolódik hozzá. (A http-é 83.)</p>
+    <p>-	Mindegyik protokollhoz tartozik egy alapértelmezett portcím.</p>
+    <p>-	Ha szerver más porton várja a kérést, akkor a „:” után meg kell adni a portcímet.</p>
+    <p>-	→path: helyi erőforrások, konkrét állományok, mappák megadására szolgál.</p>
+    <p>-	„#”: az erőforrás tartozéka.</p>
+    <p>-	„?”: az URL része, utána kulcsértékpárok vannak, amivel az erőforrást még jobban szűkíthetjük, az egyes értékpárokat „&”-sel választjuk el</p>
+    <p>-	a request ezeket tartalmazza, a node.js alkalmazáson ezekkel dolgozik.</p>
+    <p>-	A node.js-es munka nagy része szerverprogramozás.</p>
+    <p>-	az RFC 7231 egy protokoll.</p>
+    <br>
+    <h2>EGY MUNKAMENET</h2>
+    <p>-	nodejs.org</p>
+    <p>-	letöltjük és feltelepítjük a node.js valamelyik verzióját (lehetőleg a legfrissebbet)</p>
+    <p>-	a bepipálható részt nem kell bepipálni telepítéskor</p>
+    <p>-	telepítés után újra kell indítani a számítógépet, ha Windows-os számítógépet használunk</p>
+    <p>-	Visual Studio Code → Terminal → New Terminal → node –v</p>
+    <p>                                                  → npm –v</p>
+    <p>-	a Night Owl-t és a Beautify-t telepíthetjük a VSC-re, annak keresőjén megkeresve azokat. Ezek megjelenítési módok. A Live Server is szükséges.</p>
+    <p>-	Nodejs.org → Docs →Verziószám → http → Ctr + F → createServer → „kattintás” → Ctr + C, Ctr + V → VSC → Kész a program!</p>
+    <br>
+    <p>-	Külső modulok használatához require kell.</p>
+    <p>-	Saját modulokat is tudunk írni, illetve bárki más modulját, ha hozzáférünk.</p>
+    <p>-	Ctr + C-vel lehet leállítani a szervert.</p>
+    <p>-	npm: Node Package Manager</p>
+    <p>-	npm install http</p>
+    <p>-	Modulok két helyre mehetnek.</p>
+    <p>-	npmjs.com</p>
+    <p>-	uniq</p>
+    <br>
+    <p>-	Firstserver</p>
+    <p>→ Terminal</p>
+    <p>→New Terminal</p>
+    <p>→npm init</p>
+    <br>
+    <h2>A REQUEST METÓDUSAI</h2>
+    <p>-	get: kérés a klienstől</p>
+    <p>-	head: kérés a klienstől, csak a head, body nélkül</p>
+    <p>A kérdések URL-ként továbbítódnak, a többi kérés nem.</p>
+    <p>-	post: kérés a klienstől a szerver állapotának megváltoztatására</p>
+    <p>-	delete: kérés a klienstől a szerveren kijelölt entitás törlésére</p>
+    <p>-	patch: kérés a klienstől a szerveren lévő adat átmeneti módosítására</p>
+    <p>-	put: kérés a klienstől a szerveren lévő entitás felülírására</p>
+    <br>
+    <h2>STATUS CODE</h2>
+    <p>-	1 xy (100-as): információ.</p>
+    <p>-	2 xy (200-as): siker.</p>
+    <p>-	3 xy: átirányítás.</p>
+    <p>-	4 xy: kliens hiba.</p>
+    <p>-	404: ~</p>
+    <p>-	5 xy: szerverhibák.</p>
+    <br>
+    <h2>DOM, JSON</h2>
+    <p>Szinkron: egymás után jönnek az események. Ez nem jó, mert a várakozó események miatt a többi esemény nem tud haladni, megakad a program. Ezért egyes scripteket aszinkron módon futtatunk le.</p>
+    <p>FS (filesystem): a fájlműveletek gyakran okoznak fennakadást, ezeket aszinkronnal futtatjuk.</p>
+    <br>
+    <br>
+</body>
+</html>
